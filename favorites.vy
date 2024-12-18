@@ -16,6 +16,8 @@ index: public(uint256)
 
 list_of_people: public(Person[3]) # (7, Juan), (2, Pedro), (10, Luis)
 
+name_of_favorite_number: public(HashMap[String[100], uint256])
+
 # Constructor
 @deploy
 def __init__():
@@ -43,3 +45,7 @@ def add_people(favorite_number: uint256, name: String[100]):
     new_person: Person = Person(favorite_number = favorite_number, name = name)
     self.list_of_people[self.index] = new_person
     self.index += 1
+
+@external
+def hashmap_people(favorite_number: uint256, name: String[100]):
+    self.name_of_favorite_number[name] = favorite_number
